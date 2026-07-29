@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shafiq Ur Rehman — Civil Engineer, AI-Augmented</title>
+<meta name="description" content="Shafiq Ur Rehman is a civil engineering student at NUTECH Islamabad from Chipurson Valley, Hunza, working on flood modeling, seismic analysis, and GLOF risk monitoring for mountain regions using AI and remote sensing.">
+<meta name="author" content="Shafiq Ur Rehman">
+<link rel="canonical" href="https://shafiq-07.github.io/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Shafiq Ur Rehman — Civil Engineer, AI-Augmented">
+<meta property="og:description" content="Civil engineering student from Chipurson Valley, Hunza — flood modeling, seismic analysis, and GLOF risk monitoring for hazard-prone mountain regions.">
+<meta property="og:url" content="https://shafiq-07.github.io/">
+<meta property="og:image" content="https://shafiq-07.github.io/profile.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Shafiq Ur Rehman — Civil Engineer, AI-Augmented">
+<meta name="twitter:description" content="Civil engineering student from Chipurson Valley, Hunza — flood modeling, seismic analysis, and GLOF risk monitoring for hazard-prone mountain regions.">
+<meta name="twitter:image" content="https://shafiq-07.github.io/profile.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,340;9..144,480;9..144,600&family=Work+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0d1210;
+    --bg-2:#141c19;
+    --bg-3:#1a2320;
+    --fg:#eef1ec;
+    --slate:#96a89f;
+    --clay:#cf8f63;
+    --ice:#5fd3c0;
+    --line: rgba(238,241,236,0.11);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--fg);
+    font-family:'Work Sans', sans-serif;
+    font-weight:400;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--ice); color:var(--bg);}
+  h1,h2,h3{ font-family:'Fraunces', serif; font-weight:480; letter-spacing:-0.01em; color:var(--fg);}
+  .mono{ font-family:'JetBrains Mono', monospace; font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--slate);}
+  .wrap{ max-width:1080px; margin:0 auto; padding:0 6vw; }
+
+  /* topo bg — glowing contour lines on dark */
+  .topo-bg{ position:absolute; inset:0; width:100%; height:100%; z-index:0; pointer-events:none; }
+  .topo-bg path{ fill:none; stroke:var(--ice); stroke-width:1; opacity:0.14; }
+  .topo-bg path:nth-child(odd){ stroke:var(--clay); opacity:0.10; }
+
+  #surveyLineWrap{ position:absolute; left:50%; top:0; width:2px; height:100%; transform:translateX(-50%); z-index:1; pointer-events:none; }
+  #surveyLine{ stroke:var(--clay); stroke-width:1.4; stroke-dasharray:2 7; fill:none; opacity:0.4; }
+
+  nav{
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    display:flex; justify-content:space-between; align-items:center;
+    padding:22px 6vw;
+    backdrop-filter:blur(8px);
+    background:linear-gradient(to bottom, rgba(13,18,16,0.92), rgba(13,18,16,0));
+  }
+  nav .brand{ font-family:'Fraunces', serif; font-size:1.05rem; font-weight:600; color:var(--fg);}
+  nav .brand span{color:var(--ice);}
+  nav ul{ list-style:none; display:flex; gap:26px; }
+  nav a{
+    color:var(--fg); text-decoration:none; font-size:0.8rem; letter-spacing:0.03em;
+    font-family:'JetBrains Mono', monospace; text-transform:uppercase; position:relative; padding-bottom:3px;
+  }
+  nav a::after{ content:''; position:absolute; left:0; bottom:0; width:0; height:1px; background:var(--ice); transition:width .25s ease;}
+  nav a:hover::after{width:100%;}
+
+  header.hero{ position:relative; min-height:100vh; display:flex; align-items:center; padding-top:80px; }
+  .hero-grid{ position:relative; z-index:2; display:grid; grid-template-columns:1.15fr 0.85fr; gap:60px; align-items:center; width:100%; }
+  .coord-tag{ display:inline-flex; align-items:center; gap:8px; margin-bottom:18px; }
+  .coord-tag::before{ content:''; width:7px; height:7px; border-radius:50%; background:var(--ice); box-shadow:0 0 8px var(--ice); }
+  .role-tag{
+    display:inline-flex; align-items:center; gap:8px; margin-bottom:18px; margin-left:14px;
+    padding:4px 10px; border:1px solid var(--line); font-family:'JetBrains Mono', monospace; font-size:0.68rem; color:var(--clay);
+    text-transform:uppercase; letter-spacing:0.05em;
+  }
+  h1.name{ font-size:clamp(2.6rem, 6vw, 4.4rem); line-height:1.02; margin-bottom:18px; }
+  .hero p.tagline{ font-size:1.15rem; max-width:50ch; color:var(--slate); margin-bottom:14px; }
+  .hero p.subtag{ font-family:'JetBrains Mono', monospace; font-size:0.85rem; color:var(--ice); margin-bottom:34px; }
+  .btn-row{display:flex; gap:16px; flex-wrap:wrap;}
+  .btn{
+    display:inline-block; padding:13px 26px; border-radius:2px;
+    font-family:'JetBrains Mono', monospace; font-size:0.78rem; letter-spacing:0.05em; text-transform:uppercase;
+    text-decoration:none; transition:all .25s ease; border:1px solid var(--fg);
+  }
+  .btn.primary{ background:var(--fg); color:var(--bg); }
+  .btn.primary:hover{ background:var(--ice); border-color:var(--ice); }
+  .btn.ghost{ color:var(--fg); background:transparent; }
+  .btn.ghost:hover{ background:var(--fg); color:var(--bg); }
+
+  .portrait-frame{ position:relative; aspect-ratio:3/3.4; border:1px solid var(--line); padding:14px; }
+  .portrait-frame img{ width:100%; height:100%; object-fit:cover; filter:grayscale(25%) contrast(1.05) brightness(0.98); }
+  .portrait-frame .corner{ position:absolute; width:16px; height:16px; border:1.4px solid var(--ice); }
+  .corner.tl{top:-1px; left:-1px; border-right:none; border-bottom:none;}
+  .corner.br{bottom:-1px; right:-1px; border-left:none; border-top:none;}
+  .portrait-caption{ margin-top:14px; display:flex; justify-content:space-between; }
+
+  .scroll-cue{ position:absolute; bottom:34px; left:50%; transform:translateX(-50%); z-index:3; display:flex; flex-direction:column; align-items:center; gap:8px; }
+  .scroll-cue .stick{ width:1px; height:36px; background:var(--fg); opacity:0.5; animation:pulse 2s ease-in-out infinite; }
+  @keyframes pulse{ 0%,100%{opacity:0.15; transform:scaleY(0.6); transform-origin:top;} 50%{opacity:0.6; transform:scaleY(1);} }
+
+  section{ position:relative; z-index:2; padding:120px 0 60px; }
+  .eyebrow{ display:flex; align-items:center; gap:14px; margin-bottom:44px; }
+  .eyebrow .num{color:var(--clay);}
+  .eyebrow .rule{flex:1; height:1px; background:var(--line);}
+  .section-title{ font-size:clamp(1.8rem, 3.2vw, 2.6rem); margin-bottom:34px; max-width:18ch; }
+
+  .story-body{ display:grid; grid-template-columns:1fr 1fr; gap:60px; }
+  .story-body p{ margin-bottom:20px; }
+  .story-body p.lede{ font-family:'Fraunces', serif; font-size:1.3rem; font-weight:340; line-height:1.5; }
+  .story-body p{color:var(--slate);}
+  .stat-strip{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:10px; border-top:1px solid var(--line); padding-top:24px; }
+  .stat-strip .stat-num{ font-family:'Fraunces', serif; font-size:2.1rem; color:var(--ice); }
+  .stat-strip .stat-label{ margin-top:4px; }
+
+  .timeline{ position:relative; padding-left:34px; border-left:1px solid var(--line); }
+  .tl-item{ position:relative; padding-bottom:44px; }
+  .tl-item:last-child{padding-bottom:0;}
+  .tl-item::before{ content:''; position:absolute; left:-39px; top:4px; width:9px; height:9px; border-radius:50%; background:var(--bg); border:2px solid var(--clay); }
+  .tl-item .tl-mark{margin-bottom:6px;}
+  .tl-item h3{ font-size:1.15rem; margin-bottom:6px; font-weight:480; }
+  .tl-item p{color:var(--slate); max-width:62ch;}
+
+  /* featured amal block */
+  .feature-card{
+    margin-top:20px; padding:30px; border:1px solid var(--line); background:var(--bg-2);
+    display:grid; grid-template-columns:1fr; gap:14px;
+  }
+  .feature-card .flabel{color:var(--ice);}
+  .feature-card ul{ margin:10px 0 0 18px; color:var(--slate); }
+  .feature-card li{margin-bottom:6px;}
+
+  .equip-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); }
+  .equip-card{ background:var(--bg-2); padding:26px; }
+  .equip-card h3{ font-size:1rem; margin-bottom:14px; display:flex; align-items:center; gap:8px; }
+  .equip-card h3::before{ content:''; width:6px; height:6px; background:var(--ice); }
+  .tag-list{ display:flex; flex-wrap:wrap; gap:8px; }
+  .tag{ font-family:'JetBrains Mono', monospace; font-size:0.7rem; letter-spacing:0.02em; padding:5px 10px; border:1px solid var(--line); color:var(--slate); }
+
+  .project-list{ display:flex; flex-direction:column; }
+  .project{ display:grid; grid-template-columns:0.9fr 2.1fr; gap:36px; padding:34px 0; border-top:1px solid var(--line); transition:background .2s ease; }
+  .project:last-child{border-bottom:1px solid var(--line);}
+  .project:hover{background:rgba(95,211,192,0.05);}
+  .project .loc{ display:flex; flex-direction:column; gap:6px; }
+  .project .loc .place{ font-family:'Fraunces', serif; font-size:1.05rem; font-weight:480; color:var(--ice); }
+  .project h3{ font-size:1.25rem; margin-bottom:10px; }
+  .project p{color:var(--slate); max-width:68ch;}
+  .project .metrics{ margin-top:12px; display:flex; gap:18px; flex-wrap:wrap; }
+  .project .metrics span{ font-family:'JetBrains Mono', monospace; font-size:0.72rem; color:var(--clay); }
+  .live-badge{
+    display:inline-flex; align-items:center; gap:6px; margin-top:14px;
+    font-family:'JetBrains Mono', monospace; font-size:0.72rem; color:var(--ice); text-decoration:none;
+    border:1px solid var(--ice); padding:8px 14px;
+  }
+  .live-badge::before{ content:''; width:6px; height:6px; border-radius:50%; background:var(--ice); box-shadow:0 0 6px var(--ice); animation:pulse2 1.6s infinite; }
+  @keyframes pulse2{ 0%,100%{opacity:1;} 50%{opacity:0.3;} }
+  .live-badge:hover{ background:var(--ice); color:var(--bg); }
+  .live-badge:hover::before{background:var(--bg); box-shadow:none;}
+
+  .community-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(260px,1fr)); gap:28px; }
+  .comm-card{ padding:28px; border:1px solid var(--line); position:relative; background:var(--bg-2); }
+  .comm-card h3{font-size:1.05rem; margin-bottom:10px;}
+  .comm-card p{color:var(--slate); font-size:0.95rem;}
+
+  footer.contact{ position:relative; z-index:2; padding:110px 0 60px; background:#090d0b; margin-top:40px; }
+  footer.contact .wrap{position:relative; z-index:2;}
+  footer h2{ font-size:clamp(2rem,5vw,3.4rem); max-width:14ch; margin-bottom:30px; }
+  footer .contact-row{ display:flex; gap:40px; flex-wrap:wrap; margin-top:40px; border-top:1px solid var(--line); padding-top:30px; }
+  footer .contact-item .mono{color:var(--ice);}
+  footer .contact-item a{ color:var(--fg); text-decoration:none; font-family:'Fraunces', serif; font-size:1.2rem; border-bottom:1px solid var(--line); }
+  footer .contact-item a:hover{ border-color:var(--clay); color:var(--clay); }
+  footer .fine{ margin-top:60px; display:flex; justify-content:space-between; color:var(--slate); font-size:0.78rem; font-family:'JetBrains Mono', monospace; flex-wrap:wrap; gap:10px; opacity:0.6; }
+
+  .reveal{ opacity:0; transform:translateY(18px); transition:opacity .7s ease, transform .7s ease; }
+  .reveal.in{opacity:1; transform:translateY(0);}
+  @media (prefers-reduced-motion: reduce){ .reveal{opacity:1; transform:none; transition:none;} .scroll-cue .stick{animation:none;} }
+
+  @media (max-width:860px){
+    .hero-grid{grid-template-columns:1fr; gap:40px;}
+    .hero-grid .portrait-frame{max-width:340px;}
+    .story-body{grid-template-columns:1fr;}
+    .project{grid-template-columns:1fr; gap:10px;}
+    nav ul{gap:16px;}
+    .stat-strip{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:560px){ nav ul{display:none;} section{padding:90px 0 40px;} }
+  a:focus-visible, button:focus-visible{ outline:2px solid var(--ice); outline-offset:3px; }
+</style>
+</head>
+<body>
+
+<div id="surveyLineWrap"><svg width="2" height="100%" preserveAspectRatio="none" style="position:absolute; top:0; left:0; height:100%;"><line id="surveyLine" x1="1" y1="0" x2="1" y2="100%"></line></svg></div>
+
+<nav>
+  <div class="brand">S<span>·</span>R</div>
+  <ul>
+    <li><a href="#story">Story</a></li>
+    <li><a href="#journey">Journey</a></li>
+    <li><a href="#toolkit">Toolkit</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#community">Community</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<header class="hero" id="top">
+  <svg class="topo-bg" viewBox="0 0 1200 900" preserveAspectRatio="none">
+    <path d="M-50,650 C150,600 300,700 500,640 C700,580 850,660 1250,600"/>
+    <path d="M-50,700 C180,660 330,740 520,690 C720,630 880,700 1250,650"/>
+    <path d="M-50,750 C200,720 360,780 540,740 C740,690 900,750 1250,700"/>
+    <path d="M-50,800 C220,780 380,820 560,790 C760,750 920,800 1250,760"/>
+    <path d="M-50,60 C160,20 320,90 480,40 C660,-10 820,60 1250,20" />
+    <path d="M-50,110 C180,80 340,140 500,100 C680,50 840,110 1250,70" />
+  </svg>
+  <div class="wrap hero-grid">
+    <div>
+      <div>
+        <span class="coord-tag mono">36.7167° N, 74.4167° E — Chipurson Valley, Hunza</span>
+        <span class="role-tag">Not a traditional civil engineer</span>
+      </div>
+      <h1 class="name">Shafiq Ur&nbsp;Rehman</h1>
+      <p class="tagline">Civil engineer in training, shaped by a glacier-fed valley — building resilient infrastructure for mountain communities using structural analysis, hydrology, and AI-driven tools.</p>
+      <p class="subtag">// ETABS · HEC-RAS · Google Earth Engine · Python · YOLO/CV</p>
+      <div class="btn-row">
+        <a href="#story" class="btn primary">Read the story</a>
+        <a href="#projects" class="btn ghost">See the work</a>
+        <a href="https://github.com/shafiq-07" target="_blank" rel="noopener" class="btn ghost">GitHub ↗</a>
+      </div>
+    </div>
+    <div class="portrait-frame">
+      <div class="corner tl"></div>
+      <div class="corner br"></div>
+      <img src="profile.jpg" alt="Portrait of Shafiq Ur Rehman">
+      <div class="portrait-caption mono">
+        <span>Islamabad, PK</span>
+        <span>Civil Eng. — NUTECH</span>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-cue"><span class="stick"></span><span class="mono">Scroll</span></div>
+</header>
+
+<main>
+  <section id="story">
+    <div class="wrap">
+      <div class="eyebrow mono"><span class="num">Base Camp</span><span class="rule"></span><span>Where it starts</span></div>
+      <h2 class="section-title reveal">Grown at altitude, engineered with new tools.</h2>
+      <div class="story-body">
+        <div class="reveal">
+          <p class="lede">I grew up in Chipurson Valley — a remote, glacier-fed corner of Hunza, Gilgit-Baltistan, where the landscape is beautiful and unforgiving in equal measure.</p>
+          <p>Watching that terrain shift — floods, seismic tremors, glacial retreat — made infrastructure feel personal, not theoretical. That's why nearly every project I take on circles back to hazard-prone mountain regions, and why I don't limit myself to traditional civil engineering methods — I bring in Python, machine learning, and satellite data wherever they sharpen the answer.</p>
+        </div>
+        <div class="reveal">
+          <p>I'm currently in my seventh semester of Civil Engineering at NUTECH, Islamabad, ranked #1 in my class with a 3.8/4.00 CGPA. Twelve years in scouting built the discipline and leadership underneath all of it, and the Amal Academy Fellowship sharpened how I turn that into organized community impact.</p>
+          <div class="stat-strip">
+            <div><div class="stat-num">#1</div><div class="stat-label mono">Class Rank</div></div>
+            <div><div class="stat-num">12</div><div class="stat-label mono">Yrs Scouting</div></div>
+            <div><div class="stat-num">2027</div><div class="stat-label mono">Grad. (Exp.)</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="journey">
+    <div class="wrap">
+      <div class="eyebrow mono"><span class="num">Ascent</span><span class="rule"></span><span>The route so far</span></div>
+      <h2 class="section-title reveal">Journey</h2>
+      <div class="timeline">
+        <div class="tl-item reveal">
+          <div class="tl-mark mono">Foundation — 12 years</div>
+          <h3>Scouting</h3>
+          <p>Twelve years in scouting, building the leadership and discipline that still shapes how I lead teams and projects today.</p>
+        </div>
+        <div class="tl-item reveal">
+          <div class="tl-mark mono">Sept 2023 →</div>
+          <h3>Civil Engineering, NUTECH Islamabad</h3>
+          <p>Started the BSc Civil Engineering program; now in seventh semester, ranked #1 in class with a 3.8/4.00 CGPA.</p>
+        </div>
+        <div class="tl-item reveal">
+          <div class="tl-mark mono">Fellowship — Batch 372</div>
+          <h3>Amal Academy Fellowship</h3>
+          <p>Selected for the Amal Academy Fellowship, a competitive professional-development program built around leadership and community impact.</p>
+          <div class="feature-card">
+            <div class="flabel mono">Mega Project — Defend &amp; Rise</div>
+            <p style="color:var(--slate); margin-bottom:0;">Designed and delivered a self-defense and empowerment program for teenage domestic workers across Islamabad's F-6/2 Christian Colony and France Colony, leading a seven-member team from concept to execution.</p>
+            <ul>
+              <li>Milestone Report 1 — problem framing and program design</li>
+              <li>Project poster for stakeholder presentation</li>
+              <li>NGO partnership proposal to extend program reach</li>
+              <li>Milestone Report 2 — final impact report</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tl-item reveal">
+          <div class="tl-mark mono">Ongoing</div>
+          <h3>ASWED &amp; GB Council</h3>
+          <p>Education Lead, Central Region, with ASWED — guiding scholarship programs, educational initiatives, and NGO collaboration; also Education Team Lead with GB Council for students from Gilgit-Baltistan.</p>
+        </div>
+        <div class="tl-item reveal">
+          <div class="tl-mark mono">Response &amp; Coordination</div>
+          <h3>Chipurson Seismic Response</h3>
+          <p>Documented and coordinated the community response to prolonged seismic activity at home — damage assessment, winterization needs, and coordination with NGOs, donors, and the Geological Survey of Pakistan.</p>
+        </div>
+        <div class="tl-item reveal">
+          <div class="tl-mark mono">Current — 8 Weeks</div>
+          <h3>Internship, Frontier Works Organization (FWO)</h3>
+          <p>Ongoing internship at FWO HQ, Rawalpindi — first rotation in the Plans Directorate, covering contract management, project documentation, and planning procedures.</p>
+        </div>
+        <div class="tl-item reveal">
+          <div class="tl-mark mono">Ahead — 2027 →</div>
+          <h3>Graduate Studies</h3>
+          <p>Aiming for an MS/PhD in climate change, disaster management, or structural / water resources engineering — building toward resilient infrastructure for hazard-prone mountain regions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="toolkit">
+    <div class="wrap">
+      <div class="eyebrow mono"><span class="num">Equipment</span><span class="rule"></span><span>What I build with</span></div>
+      <h2 class="section-title reveal">Toolkit</h2>
+      <div class="equip-grid reveal">
+        <div class="equip-card">
+          <h3>AI &amp; Programming</h3>
+          <div class="tag-list">
+            <span class="tag">Python (NumPy/Pandas)</span>
+            <span class="tag">Scikit-learn</span>
+            <span class="tag">OpenCV / YOLOv8</span>
+            <span class="tag">MATLAB</span>
+            <span class="tag">VS Code · Colab</span>
+          </div>
+        </div>
+        <div class="equip-card">
+          <h3>Structural</h3>
+          <div class="tag-list">
+            <span class="tag">ETABS (nonlinear)</span>
+            <span class="tag">Pushover / NLTHA</span>
+            <span class="tag">AutoCAD</span>
+            <span class="tag">Civil 3D</span>
+            <span class="tag">Abaqus (basic)</span>
+          </div>
+        </div>
+        <div class="equip-card">
+          <h3>Water &amp; GIS</h3>
+          <div class="tag-list">
+            <span class="tag">HEC-RAS</span>
+            <span class="tag">Google Earth Engine</span>
+            <span class="tag">QGIS / ArcGIS</span>
+            <span class="tag">NDWI / Remote Sensing</span>
+          </div>
+        </div>
+        <div class="equip-card">
+          <h3>Construction &amp; Cost</h3>
+          <div class="tag-list">
+            <span class="tag">Bluebeam Revu</span>
+            <span class="tag">PlanSwift</span>
+            <span class="tag">Excel — BOQ / Estimation</span>
+          </div>
+        </div>
+        <div class="equip-card">
+          <h3>Transportation</h3>
+          <div class="tag-list">
+            <span class="tag">Synchro</span>
+            <span class="tag">HCM Methodology</span>
+            <span class="tag">LOS / Delay Analysis</span>
+          </div>
+        </div>
+        <div class="equip-card">
+          <h3>Field &amp; Survey</h3>
+          <div class="tag-list">
+            <span class="tag">Total Station</span>
+            <span class="tag">GPS Surveying</span>
+            <span class="tag">Group Leadership</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="wrap">
+      <div class="eyebrow mono"><span class="num">Traverse</span><span class="rule"></span><span>Field &amp; project work</span></div>
+      <h2 class="section-title reveal">Projects</h2>
+      <div class="project-list reveal">
+
+        <div class="project">
+          <div class="loc"><span class="place">Yishkuk Glacier</span><span class="mono">Chipurson Valley · GEE Dashboard</span></div>
+          <div>
+            <h3>Interactive GLOF Risk Monitoring Dashboard</h3>
+            <p>Built an interactive Glacial Lake Outburst Flood (GLOF) risk monitoring dashboard in Google Earth Engine for Yishkuk Glacier, in my home valley. Using the Sentinel-2 archive (2019–2026), it computes NDWI to track seasonal meltwater and lake-surface-area trends, with a before-after slider to visually assess glacier and lake extent changes over time.</p>
+            <div class="metrics"><span>SENTINEL-2 · NDWI</span><span>2019–2026</span></div>
+            <a href="https://proj-no-1.projects.earthengine.app/view/yishkuk-glof-dashboard" target="_blank" rel="noopener" class="live-badge">View live dashboard</a>
+            <a href="https://github.com/shafiq-07/GLOF-Dashboard-Yeshkuk-Glacier" target="_blank" rel="noopener" class="live-badge" style="border-color:var(--slate); color:var(--slate);">View on GitHub</a>
+          </div>
+        </div>
+
+        <div class="project">
+          <div class="loc"><span class="place">RC Multi-Storey Building</span><span class="mono">Structural · Seismic</span></div>
+          <div>
+            <h3>Nonlinear Seismic Performance Analysis</h3>
+            <p>Full nonlinear seismic analysis in ETABS: modeled plastic and fiber hinges, ran pushover analysis to trace the building's capacity curve, then nonlinear time-history analysis against PEER ground motion records to assess real performance levels rather than relying on linear code-based approximations.</p>
+            <div class="metrics"><span>ETABS</span><span>PUSHOVER</span><span>NLTHA</span><span>PEER GROUND MOTIONS</span></div>
+          </div>
+        </div>
+
+        <div class="project">
+          <div class="loc"><span class="place">Swat Region</span><span class="mono">Hydrology · ML</span></div>
+          <div>
+            <h3>Flood Modeling, Simulation &amp; District-Wise Risk Mapping</h3>
+            <p>Modeled and simulated flood behavior and risk mapping for the Swat region using HEC-RAS, then built a district-wise flood prediction model in Python — layering in Google Earth Engine, SRTM DEM, HydroRIVERS, and MSWEP rainfall data with ML classification for susceptibility mapping.</p>
+            <div class="metrics"><span>HEC-RAS</span><span>PYTHON / ML</span><span>GEE · SRTM · MSWEP</span></div>
+          </div>
+        </div>
+
+        <div class="project">
+          <div class="loc"><span class="place">Signalized Network</span><span class="mono">Transportation</span></div>
+          <div>
+            <h3>Signal Optimization &amp; Capacity Analysis</h3>
+            <p>Transportation engineering project using Synchro for signal optimization, level-of-service, and delay/capacity analysis under HCM methodology.</p>
+            <div class="metrics"><span>SYNCHRO · HCM</span></div>
+          </div>
+        </div>
+
+        <div class="project">
+          <div class="loc"><span class="place">Field Camp</span><span class="mono">Surveying · Leadership</span></div>
+          <div>
+            <h3>15-Day Survey Camp — Group Leader</h3>
+            <p>Led a 15-day field survey camp as Group Leader, with hands-on experience using Total Station and GPS equipment.</p>
+            <div class="metrics"><span>TOTAL STATION · GPS</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="community">
+    <div class="wrap">
+      <div class="eyebrow mono"><span class="num">Basecamp Support</span><span class="rule"></span><span>Beyond the classroom</span></div>
+      <h2 class="section-title reveal">Community &amp; Leadership</h2>
+      <div class="community-grid reveal">
+        <div class="comm-card">
+          <h3>ASWED — Education Lead, Central Region</h3>
+          <p>Association for Social Welfare and Education Development — leading educational initiatives, a scholarship guidance program, student coordination, and NGO collaboration across the Central Region.</p>
+        </div>
+        <div class="comm-card">
+          <h3>GB Council — Education Team Lead</h3>
+          <p>Organizing educational and community activities for students from Gilgit-Baltistan.</p>
+        </div>
+        <div class="comm-card">
+          <h3>Chipurson Seismic Response</h3>
+          <p>Documented and coordinated the community response to prolonged seismic activity in Chipurson Valley — damage assessment, winterization and shelter needs, and coordination with NGOs, donors, and the Geological Survey of Pakistan.</p>
+        </div>
+        <div class="comm-card">
+          <h3>Amal Academy — Defend &amp; Rise</h3>
+          <p>Led a seven-member team delivering a self-defense and empowerment program for teenage domestic workers in Islamabad, as the Fellowship's Mega Project.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="contact" id="contact">
+  <svg class="topo-bg" viewBox="0 0 1200 500" preserveAspectRatio="none" style="opacity:0.5;">
+    <path d="M-50,80 C150,40 300,110 500,60 C700,10 850,80 1250,40" stroke="var(--ice)"/>
+    <path d="M-50,130 C180,100 330,160 520,120 C720,70 880,130 1250,90" stroke="var(--ice)"/>
+  </svg>
+  <div class="wrap">
+    <div class="eyebrow mono"><span class="num">Rendezvous</span><span class="rule"></span><span>Get in touch</span></div>
+    <h2>Let's build something that holds up.</h2>
+    <p style="max-width:52ch; color:var(--slate);">Open to conversations on resilient infrastructure, hazard mapping, and AI-augmented mountain-region engineering — or just to connect.</p>
+    <div class="contact-row">
+      <div class="contact-item">
+        <div class="mono">Email</div>
+        <a href="mailto:shafeeqsadiquee023@gmail.com">shafeeqsadiquee023@gmail.com</a>
+      </div>
+      <div class="contact-item">
+        <div class="mono">LinkedIn</div>
+        <a href="https://www.linkedin.com/in/urshafiq" target="_blank" rel="noopener">linkedin.com/in/urshafiq</a>
+      </div>
+      <div class="contact-item">
+        <div class="mono">GitHub</div>
+        <a href="https://github.com/shafiq-07" target="_blank" rel="noopener">github.com/shafiq-07</a>
+      </div>
+    </div>
+    <div class="fine">
+      <span>Shafiq Ur Rehman — Civil Engineering, NUTECH Islamabad</span>
+      <span>Chipurson Valley, Hunza → Islamabad</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function sizeSurveyLine(){
+    const h = document.documentElement.scrollHeight;
+    const svg = document.querySelector('#surveyLineWrap svg');
+    svg.setAttribute('height', h);
+    document.getElementById('surveyLine').setAttribute('y2', h);
+  }
+  window.addEventListener('load', sizeSurveyLine);
+  window.addEventListener('resize', sizeSurveyLine);
+
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:0.12});
+  revealEls.forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
